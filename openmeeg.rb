@@ -15,15 +15,13 @@ class Openmeeg < Formula
     sha256 "08133e00055d0ae8672a96222de77919561237132a53ca668ef6492ecc7e69c2" => :x86_64_linux
   end
 
-  option "with-openmp", "Enable OpenMP multithreading"
-
   depends_on "cmake" => :build
   depends_on "hdf5"
   depends_on "libmatio"
   depends_on "zlib" unless OS.mac?
   depends_on "openblas" unless OS.mac?
 
-  needs :openmp if build.with? "openmp"
+  needs :openmp
 
   def install
     args = std_cmake_args + %w[
@@ -31,9 +29,8 @@ class Openmeeg < Formula
       -DENABLE_PYTHON=OFF
       -DBUILD_DOCUMENTATION=OFF
       -DUSE_PROGRESSBAR=ON
+      -DUSE_OMP=ON
     ]
-
-    args << " -DUSE_OMP" if build.with? "openmp"
 
     mkdir "build" do
       args << "../OpenMEEG"
