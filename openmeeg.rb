@@ -4,6 +4,7 @@ class Openmeeg < Formula
   url "https://github.com/openmeeg/openmeeg/archive/2.4.prerelease.tar.gz"
   version "2.4.prerelease"
   sha256 "fabf9addfcb99d3b3161acde98104a321ec926a1968e444edfce5334adb1ae87"
+  revision 1
 
   head "https://github.com/openmeeg/openmeeg.git"
 
